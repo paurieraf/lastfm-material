@@ -78,7 +78,7 @@ class ArtistGrid extends Component {
                             key={tile.img}
                             title={tile.title}
                             actionIcon={<IconButton></IconButton>}
-                            actionPoisition="left"
+                            actionPosition="left"
                             titlePosition="top"
                             titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
                             cols={tile.featured ? 2 : 1}

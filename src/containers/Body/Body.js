@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Paper } from 'material-ui';
 import LoginForm from '../../components/LoginForm/LoginForm';
-import ArtistPage from '../../pages/ArtistPage/ArtistPage';
+import ArtistsPage from '../../pages/ArtistsPage/ArtistsPage';
 
 class Body extends Component {
 
@@ -41,7 +41,7 @@ class Body extends Component {
         return (
             <div className="Body">
                 <Paper style={this.style} zDepth={1}>
-                    <ArtistPage />
+                    <ArtistsPage />
                 </Paper>
             </div>
         );
