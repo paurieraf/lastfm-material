@@ -4,26 +4,29 @@ import axios from 'axios';
 
 class ArtistsPage extends Component {
     state = {
-
+        posts: []
     }
 
     constructor(props) {
         super(props);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(response => {
-                console.log(response);
+                this.setState({ posts: response.data });
             });
     }
 
     render() {
+        const posts = this.state.posts;
+        console.log('POSTS', posts);
         return (
             <div>
-                <ArtistGrid />
+                <ArtistGrid posts={posts} />
             </div>
         );
+
     }
 }
 

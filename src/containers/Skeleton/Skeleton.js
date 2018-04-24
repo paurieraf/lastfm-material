@@ -13,7 +13,7 @@ class Skeleton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false,
+            open: true,
             show: null
         };
     }
