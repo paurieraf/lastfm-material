@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Paper } from 'material-ui';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import ArtistPage from '../../pages/ArtistPage/ArtistPage';
 
 class Body extends Component {
 
@@ -25,17 +26,22 @@ class Body extends Component {
     render() {
         const isLoggedIn = this.state.isLoggedIn;
         console.log(this.isLoggedIn);
-        
+
+        if (!isLoggedIn) {
+            return (
+                <div className="Body">
+                    <Paper style={this.style} zDepth={1}>
+                        <LoginForm />
+                    </Paper>
+                </div>
+            );
+        }
+
 
         return (
             <div className="Body">
                 <Paper style={this.style} zDepth={1}>
-                    {isLoggedIn ? (
-                        <LoginForm isLoggedIn={isLoggedIn} />
-                    ) : (
-                        <LoginForm isLoggedIn={false} />
-                    )}
-
+                    <ArtistPage />
                 </Paper>
             </div>
         );
