@@ -8,8 +8,6 @@ class LoginForm extends Component {
         // margin: 10,
         // textAlign: 'center',
         // display: 'inline-block',
-        display: flex,
-        alignItems: center,
     };
 
     constructor(props) {
