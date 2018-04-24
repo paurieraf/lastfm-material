@@ -4,6 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import Body from '../Body/Body';
 
 
 
@@ -40,7 +41,9 @@ class Skeleton extends Component {
                     <MenuItem>Test 3</MenuItem>
 
                 </Drawer>
+                <Body />
             </div>
+
         );
     }
 }
