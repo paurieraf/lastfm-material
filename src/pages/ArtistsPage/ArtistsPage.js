@@ -13,10 +13,11 @@ class ArtistsPage extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
-                this.setState({ posts: response.data });
-            });
+        //     axios.get('https://jsonplaceholder.typicode.com/posts')
+        //         .then(response => {
+        //             this.setState({ posts: response.data });
+        //         });
+        this.props.getFavouriteArtists;
     }
 
     render() {
@@ -36,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFavouriteArtistsReceived: () => dispatch({ type: 'GET_FAVOURITE_ARTISTS' })
+        getFavouriteArtists: () => dispatch({ type: 'GET_FAVOURITE_ARTISTS' })
     };
 };
 
