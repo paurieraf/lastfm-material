@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ArtistGrid from '../../components/Artist/ArtistGrid/ArtistGrid';
 import axios from 'axios';
 
@@ -19,15 +20,24 @@ class ArtistsPage extends Component {
     }
 
     render() {
-        const posts = this.state.posts;
-        console.log('POSTS', posts);
         return (
             <div>
-                <ArtistGrid posts={posts} />
+                <ArtistGrid favouriteArtists={this.props.favouriteArtists} />
             </div>
         );
-
     }
 }
 
-export default ArtistsPage;
+const mapStateToProps = state => {
+    return {
+        favouriteArtists: state.favouriteArtists
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFavouriteArtistsReceived: () => dispatch({ type: 'GET_FAVOURITE_ARTISTS' })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistsPage);

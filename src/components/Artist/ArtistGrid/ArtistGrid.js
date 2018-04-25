@@ -19,8 +19,8 @@ class ArtistGrid extends Component {
 
     constructor(props) {
         super(props);
-        this.tilesData = props.posts;
-        console.log(props);
+        this.tilesData = props.favouriteArtists;
+        console.log("ARTIST_GRID", props);
     }
 
     render() {
