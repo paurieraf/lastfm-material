@@ -15,7 +15,7 @@ class Body extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoggedIn: false,
+            isLoggedIn: true,
         };
 
         this.isLoggedIn = this.state.isLoggedIn;
@@ -29,7 +29,9 @@ class Body extends Component {
         if (!isLoggedIn) {
             return (
                 <div className="Body">
-                   
+                    <Paper style={this.style} zDepth={1}>
+                        <LoginForm />
+                    </Paper>
                 </div>
             );
         }
@@ -37,10 +39,9 @@ class Body extends Component {
 
         return (
             <div className="Body">
-
-                {/* <Paper style={this.style} zDepth={1}>
+                <Paper style={this.style} zDepth={1}>
                     <ArtistsPage />
-                </Paper> */}
+                </Paper>
             </div>
         );
     }

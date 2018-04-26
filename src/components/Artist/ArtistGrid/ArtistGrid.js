@@ -24,7 +24,7 @@ class ArtistGrid extends Component {
     }
 
     render() {
-        return (<div></div>);
+        return (<div>AyyLmao ArtistGrid</div>);
     }
     // render() {
     //     return (
