@@ -8,9 +8,9 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <Skeleton/>
-      </MuiThemeProvider>
+      <div>
+        <Skeleton />
+      </div>
     );
   }
 }
