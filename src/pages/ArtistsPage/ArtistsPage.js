@@ -1,43 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArtistGrid from '../../components/Artist/ArtistGrid/ArtistGrid';
-import axios from 'axios';
-import * as actionCreators from '../../store/actions/actions';
+import * as artistActions from '../../store/actions/index';
 
 class ArtistsPage extends Component {
-    state = {
-        posts: []
-    }
+
 
     constructor(props) {
         super(props);
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
-                this.props.onGetFavouriteArtists(response);
-            });
+        this.props.onFetchFavouriteArtists();
     }
 
     render() {
+        console.log('PROPS', this.props);
+        let artistGrid = this.props.error ? <p>Error loading favouriteArtists</p> : <p>Loading...</p>;
+
+        if (this.props.favouriteArtists) {
+            artistGrid = (
+                <ArtistGrid favouriteArtists={this.props.favouriteArtists} />
+            );
+        }
         return (
             <div>
-
+                {artistGrid}
             </div>
         );
+
     }
 }
 
 const mapStateToProps = state => {
     return {
-        favouriteArtists: state.favouriteArtists
+        favouriteArtists: state.favouriteArtists,
+        error: state.error
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onGetFavouriteArtists: (response) => dispatch(actionCreators.getFavouriteArtists(response))
+        onFetchFavouriteArtists: () => dispatch(artistActions.fetchFavouriteArtists())
     };
 };
 

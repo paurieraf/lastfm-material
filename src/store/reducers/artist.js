@@ -1,17 +1,23 @@
-import * as actionTypes from '../actions/actions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    favouriteArtists: []
+    favouriteArtists: null,
+    error: false
 }
 
 const artistReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.GET_FAVOURITE_ARTISTS:
-            //TODO petició de favourite artists
+        case actionTypes.STORE_FAVOURITE_ARTISTS:
             return {
                 ...state,
-                favouriteArtists: state.favouriteArtists.concat([])
-            }
+                favouriteArtists: action.favouriteArtists,
+                error: false
+            };
+        case actionTypes.FETCH_FAVOURITE_ARTISTS_FAILED:
+            return {
+                ...state,
+                error: true
+            };
     }
 
     return state;
