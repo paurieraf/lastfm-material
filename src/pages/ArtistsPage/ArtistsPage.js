@@ -23,6 +23,7 @@ class ArtistsPage extends Component {
                 <ArtistGrid favouriteArtists={this.props.favouriteArtists} />
             );
         }
+
         return (
             <div>
                 {artistGrid}
@@ -42,7 +43,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchFavouriteArtists: () => dispatch(artistActions.fetchFavouriteArtists())
-    };
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistsPage);
