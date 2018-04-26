@@ -34,12 +34,12 @@ class ArtistGrid extends Component {
 
                     {this.tilesData.map((tile) => (
                         <GridTile
-                            key={tile.img}
+                            key={tile.id}
                             title={tile.title}
                             actionIcon={<IconButton></IconButton>}
                             actionPosition="left"
                             titlePosition="top"
-                            titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                            //titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
                             cols={tile.featured ? 2 : 1}
                             rows={tile.featured ? 2 : 1}>
                             <img src={tile.img} />

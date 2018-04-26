@@ -6,8 +6,7 @@ import ArtistsPage from '../../pages/ArtistsPage/ArtistsPage';
 class Body extends Component {
 
     style = {
-        height: 500,
-        width: '100%',
+        width: '80%',
         margin: 10,
         textAlign: 'center',
         display: 'inline-block',
