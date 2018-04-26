@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArtistGrid from '../../components/Artist/ArtistGrid/ArtistGrid';
 import axios from 'axios';
+import * as actionTypes from '../../store/actions';
 
 class ArtistsPage extends Component {
     state = {
@@ -37,7 +38,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getFavouriteArtists: () => dispatch({ type: 'GET_FAVOURITE_ARTISTS' })
+        getFavouriteArtists: () => dispatch({ type: actionTypes.GET_FAVOURITE_ARTISTS })
     };
 };
 
