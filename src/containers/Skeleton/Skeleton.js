@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+import MenuItem from 'material-ui/Menu/MenuItem';
 import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+//import MenuIcon from '@material-ui/icons/Menu';
+//import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Body from '../Body/Body';
 
 
@@ -21,26 +25,21 @@ class Skeleton extends Component {
     handleToggle = () => this.setState({ open: !this.state.open });
 
     render() {
+
         return (
+
             <div className="App">
-                <AppBar
-                    title="Last.fm"
-                    onLeftIconButtonClick={this.handleToggle}
-                />
-                <Drawer
-                    open={this.state.open}
-                    onRequestChange={(open) => this.setState({ open })}>
-
-                    <AppBar
-                        title="Menu"
-                        iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-                        onLeftIconButtonClick={this.handleToggle}
-                    />
-                    <MenuItem>Test 1</MenuItem>
-                    <MenuItem>Test 2</MenuItem>
-                    <MenuItem>Test 3</MenuItem>
-
-                </Drawer>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton className="iconbutton" color="inherit" aria-label="Menu">
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="title" color="inherit" className="typo">
+                            Title
+                        </Typography>
+                        <Button color="inherit">Login</Button>
+                    </Toolbar>
+                </AppBar>
                 <Body />
             </div>
 

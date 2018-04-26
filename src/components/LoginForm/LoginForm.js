@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextField, RaisedButton } from 'material-ui';
+import { TextField, Button } from 'material-ui';
 
 class LoginForm extends Component {
     style = {
@@ -21,7 +21,7 @@ class LoginForm extends Component {
                     hintText="Username"
                 />
                 <br />
-                <RaisedButton label="Login" />
+                <Button variant="raised" label="Login" />
             </div>
         );
     }
