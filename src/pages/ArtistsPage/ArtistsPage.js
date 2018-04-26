@@ -6,16 +6,13 @@ import * as artistActions from '../../store/actions/index';
 class ArtistsPage extends Component {
 
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
+        console.log('COMPONENT_DID_MOUNT_PROPS', this.props);
         this.props.onFetchFavouriteArtists();
     }
 
     render() {
-        console.log('PROPS', this.props);
+        console.log('RENDER_PROPS', this.props);
         let artistGrid = this.props.error ? <p>Error loading favouriteArtists</p> : <p>Loading...</p>;
 
         if (this.props.favouriteArtists) {
@@ -29,21 +26,20 @@ class ArtistsPage extends Component {
                 {artistGrid}
             </div>
         );
-
     }
 }
 
 const mapStateToProps = state => {
     return {
-        favouriteArtists: state.favouriteArtists,
-        error: state.error
+        favouriteArtists: state.artist.favouriteArtists,
+        error: state.artist.error
     };
-};
+}
 
 const mapDispatchToProps = dispatch => {
     return {
         onFetchFavouriteArtists: () => dispatch(artistActions.fetchFavouriteArtists())
-    }
-};
+    };
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistsPage);
