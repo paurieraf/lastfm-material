@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArtistGrid from '../../components/Artist/ArtistGrid/ArtistGrid';
 import axios from 'axios';
-import * as actionTypes from '../../store/actions';
+import * as actionCreators from '../../store/actions/actions';
 
 class ArtistsPage extends Component {
     state = {
@@ -14,17 +14,16 @@ class ArtistsPage extends Component {
     }
 
     componentDidMount() {
-        //     axios.get('https://jsonplaceholder.typicode.com/posts')
-        //         .then(response => {
-        //             this.setState({ posts: response.data });
-        //         });
-        this.props.getFavouriteArtists;
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(response => {
+                this.props.onGetFavouriteArtists(response);
+            });
     }
 
     render() {
         return (
             <div>
-                <ArtistGrid favouriteArtists={this.props.favouriteArtists} />
+
             </div>
         );
     }
@@ -38,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getFavouriteArtists: () => dispatch({ type: actionTypes.GET_FAVOURITE_ARTISTS })
+        onGetFavouriteArtists: (response) => dispatch(actionCreators.getFavouriteArtists(response))
     };
 };
 
