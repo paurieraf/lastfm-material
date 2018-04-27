@@ -10,7 +10,7 @@ const userReducer = (state = initialState, action) => {
         case actionTypes.STORE_LOGGED_USER:
             return {
                 ...state,
-                loggedUser: action.favouriteArtists,
+                loggedUser: action.loggedUser,
                 error: false
             };
         case actionTypes.FETCH_LOGGED_USER_FAILED:

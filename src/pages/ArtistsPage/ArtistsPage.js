@@ -23,6 +23,7 @@ class ArtistsPage extends Component {
 
         return (
             <div>
+                <h1>ArtistPage</h1>
                 {artistGrid}
             </div>
         );

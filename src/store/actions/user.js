@@ -15,12 +15,13 @@ export const storeLoggedUser = (loggedUser) => {
 
 export const fetchLoggedUser = () => {
     return dispatch => {
-        axios.get(process.env.REACT_APP_LASTFM_API_ROOT_URL)
-            .then(response => {
-                dispatch(storeLoggedUser(response.data));
-            }).catch(err => {
-                dispatch(fetchLoggedUserFailed(err));
-            })
+        // axios.get(process.env.REACT_APP_LASTFM_API_ROOT_URL)
+        //     .then(response => {
+        //         dispatch(storeLoggedUser(response.data));
+        //     }).catch(err => {
+        //         dispatch(fetchLoggedUserFailed(err));
+        //     });
+        dispatch(storeLoggedUser({username:'pau.riera'}));
     }
 };
 
