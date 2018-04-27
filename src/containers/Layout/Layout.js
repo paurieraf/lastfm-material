@@ -11,7 +11,8 @@ import Body from '../Body/Body';
 
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import List from 'material-ui/List';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+
 import Divider from 'material-ui/Divider';
 
 
@@ -57,7 +58,6 @@ class Layout extends Component {
 
     render() {
         return (
-
             <div className={this.styles.root}>
                 <AppBar position="absolute" className={this.styles.appBar}>
                     <Toolbar>
@@ -73,9 +73,15 @@ class Layout extends Component {
                     }}>
                     <div className={this.styles.toolbar} />
                     <List>
+                        <ListItem button>
+                            <ListItemText primary="Trash" />
+                        </ListItem>
                     </List>
                     <Divider />
                     <List>
+                    <ListItem button>
+                    <ListItemText primary="Trash" />
+                  </ListItem>
                     </List>
                 </Drawer>
                 <main className={this.styles.content}>
