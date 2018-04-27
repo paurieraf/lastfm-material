@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import AppBar from 'material-ui/AppBar';
@@ -9,10 +9,10 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Body from '../Body/Body';
 
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import List, {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
 
 import Divider from 'material-ui/Divider';
-import { withStyles } from 'material-ui/styles';
+import {withStyles} from 'material-ui/styles';
 import PropTypes from 'prop-types';
 
 const drawerWidth = 240;
@@ -24,14 +24,14 @@ const styles = theme => ({
         zIndex: 1,
         overflow: 'hidden',
         position: 'relative',
-        display: 'flex',
+        display: 'flex'
     },
     appBar: {
-        zIndex: theme.zIndex.drawer + 1,
+        zIndex: theme.zIndex.drawer + 1
     },
     drawerPaper: {
         position: 'relative',
-        width: drawerWidth,
+        width: drawerWidth
     },
     content: {
         flexGrow: 1,
@@ -39,9 +39,8 @@ const styles = theme => ({
         padding: theme.spacing.unit * 3,
         minWidth: 0, // So the Typography noWrap works
     },
-    toolbar: theme.mixins.toolbar,
+    toolbar: theme.mixins.toolbar
 });
-
 
 class Layout extends Component {
 
@@ -53,10 +52,12 @@ class Layout extends Component {
         };
     }
 
-    handleToggle = () => this.setState({ open: !this.state.open });
+    handleToggle = () => this.setState({
+        open: !this.state.open
+    });
 
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
 
         return (
             <div className={classes.root}>
@@ -70,31 +71,31 @@ class Layout extends Component {
                 <Drawer
                     variant="permanent"
                     classes={{
-                        paper: classes.drawerPaper,
-                    }}>
-                    <div className={classes.toolbar} />
+                    paper: classes.drawerPaper
+                }}>
+                    <div className={classes.toolbar}/>
                     <List>
                         <ListItem button>
-                            <ListItemText primary="Artists" />
+                            <ListItemText primary="Artists"/>
                         </ListItem>
                         <ListItem button component="a" href="#simple-list">
-                            <ListItemText primary="Albums" />
+                            <ListItemText primary="Albums"/>
                         </ListItem>
                         <ListItem button component="a" href="#simple-list">
-                            <ListItemText primary="Tracks" />
+                            <ListItemText primary="Tracks"/>
                         </ListItem>
                     </List>
-                    <Divider />
+                    <Divider/>
                     <List>
                         <ListItem button>
-                            <ListItemText primary="About" />
+                            <ListItemText primary="About"/>
                         </ListItem>
                     </List>
                 </Drawer>
                 <main className={classes.content}>
-                    <div className={classes.toolbar} />
+                    <div className={classes.toolbar}/>
 
-                    <Body />
+                    <Body/>
                 </main>
             </div>
         );
