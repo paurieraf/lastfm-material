@@ -15,11 +15,11 @@ export const storeLoggedUser = (loggedUser) => {
 
 export const fetchLoggedUser = () => {
     return dispatch => {
-        axios.get('')
+        axios.get(process.env.REACT_APP_LASTFM_API_ROOT_URL)
             .then(response => {
                 dispatch(storeLoggedUser(response.data));
             }).catch(err => {
-                dispatch(gfetch)
+                dispatch(fetchLoggedUserFailed(err));
             })
     }
 };

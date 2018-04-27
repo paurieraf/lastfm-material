@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { TextField, Button } from 'material-ui';
+import * as userActions from '../../store/actions/index';
 
 class LoginForm extends Component {
     style = {
@@ -14,6 +16,10 @@ class LoginForm extends Component {
         super(props);
     }
 
+    handleOnFetchLoggedUser = () => {
+        this.props.onFetchLoggedUser();
+    }
+
     render() {
         return (
             <div className="LoginForm" style={this.style}>
@@ -21,10 +27,26 @@ class LoginForm extends Component {
                     hintText="Username"
                 />
                 <br />
-                <Button variant="raised" label="Login" />
+                <Button
+                    variant="raised"
+                    label="Login"
+                    onClick={this.handleOnFetchLoggedUser()} />
             </div>
         );
     }
 }
 
-export default LoginForm;
+const mapStateToProps = state => {
+    return {
+        loggedUser: state.user.loggedUser,
+        error: state.user.error
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchLoggedUser: () => dispatch(userActions.fetchLoggedUser())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
