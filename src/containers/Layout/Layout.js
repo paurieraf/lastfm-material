@@ -93,7 +93,7 @@ class Layout extends Component {
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Typography noWrap>{'Ayy LMAO.'}</Typography>
+                    <Typography noWrap>{process.env.REACT_APP_LASTFM_REGISTERED_TO}</Typography>
                 </main>
             </div>
         );
