@@ -9,42 +9,41 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Body from '../Body/Body';
 
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 
 import Divider from 'material-ui/Divider';
+import { withStyles } from 'material-ui/styles';
+import PropTypes from 'prop-types';
 
+const drawerWidth = 240;
+
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        //height: 430,
+        zIndex: 1,
+        overflow: 'hidden',
+        position: 'relative',
+        display: 'flex',
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    drawerPaper: {
+        position: 'relative',
+        width: drawerWidth,
+    },
+    content: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.default,
+        padding: theme.spacing.unit * 3,
+        minWidth: 0, // So the Typography noWrap works
+    },
+    toolbar: theme.mixins.toolbar,
+});
 
 
 class Layout extends Component {
-    drawerWidth = 240;
-
-    styles = theme => ({
-        root: {
-            flexGrow: 1,
-            height: 430,
-            zIndex: 1,
-            overflow: 'hidden',
-            position: 'relative',
-            display: 'flex',
-        },
-        appBar: {
-            zIndex: theme.zIndex.drawer + 1,
-        },
-        drawerPaper: {
-            position: 'relative',
-            width: 240,
-        },
-        content: {
-            flexGrow: 1,
-            backgroundColor: theme.palette.background.default,
-            padding: theme.spacing.unit * 3,
-            minWidth: 0, // So the Typography noWrap works
-        },
-        toolbar: theme.mixins.toolbar,
-    });
-
 
     constructor(props) {
         super(props);
@@ -57,40 +56,52 @@ class Layout extends Component {
     handleToggle = () => this.setState({ open: !this.state.open });
 
     render() {
+        const { classes } = this.props;
+
         return (
-            <div className={this.styles.root}>
-                <AppBar position="absolute" className={this.styles.appBar}>
+            <div className={classes.root}>
+                <AppBar position="absolute" className={classes.appBar}>
                     <Toolbar>
                         <Typography variant="title" color="inherit" noWrap>
-                            Clipped drawer
+                            Last.fm
                         </Typography>
                     </Toolbar>
                 </AppBar>
                 <Drawer
                     variant="permanent"
-                    styles={{
-                        paper: this.styles.drawerPaper,
+                    classes={{
+                        paper: classes.drawerPaper,
                     }}>
-                    <div className={this.styles.toolbar} />
+                    <div className={classes.toolbar} />
                     <List>
                         <ListItem button>
-                            <ListItemText primary="Trash" />
+                            <ListItemText primary="Artists" />
+                        </ListItem>
+                        <ListItem button component="a" href="#simple-list">
+                            <ListItemText primary="Albums" />
+                        </ListItem>
+                        <ListItem button component="a" href="#simple-list">
+                            <ListItemText primary="Tracks" />
                         </ListItem>
                     </List>
                     <Divider />
                     <List>
-                    <ListItem button>
-                    <ListItemText primary="Trash" />
-                  </ListItem>
+                        <ListItem button>
+                            <ListItemText primary="About" />
+                        </ListItem>
                     </List>
                 </Drawer>
-                <main className={this.styles.content}>
-                    <div className={this.styles.toolbar} />
-                    <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
+                <main className={classes.content}>
+                    <div className={classes.toolbar} />
+                    <Typography noWrap>{'Ayy LMAO.'}</Typography>
                 </main>
             </div>
         );
     }
 }
 
-export default Layout;
+Layout.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Layout);
