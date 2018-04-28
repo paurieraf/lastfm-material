@@ -8,10 +8,15 @@ export const storeFavouriteArtists = (favouriteArtists) => {
     };
 };
 
-export const fetchFavouriteArtists = () => {
+export const fetchFavouriteArtists = (username) => {
     return dispatch => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
+        axios.get(
+            process.env.REACT_APP_LASTFM_API_ROOT_URL
+            + '?api_key=' + process.env.REACT_APP_LASTFM_API_KEY
+            + '&format=json'
+            + '&method=user.gettopartists'
+            + '&user=' + username
+        ).then(response => {
                 dispatch(storeFavouriteArtists(response.data));
             }).catch(err => {
                 dispatch(fetchFavouriteArtistsFailed());

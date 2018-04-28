@@ -19,7 +19,7 @@ class LoginDialog extends Component {
 
     handleOnFetchLoggedUser = () => {
         console.log('LOGIN_DIALOG_HANDLE_ON_FETCH_LOGGED_USER');
-        this.props.onFetchLoggedUser();
+        this.props.onFetchLoggedUser(this.state.username);
     }
 
     handleUsernameInputChange = (event) => {
@@ -50,7 +50,6 @@ class LoginDialog extends Component {
                         margin="dense"
                         fullWidth
                         onChange={this.handleUsernameInputChange}
-
                     />
                 </DialogContent>
                 <DialogActions>
@@ -73,7 +72,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchLoggedUser: () => dispatch(userActions.fetchLoggedUser())
+        onFetchLoggedUser: (username) => dispatch(userActions.fetchLoggedUser(username))
     }
 }
 

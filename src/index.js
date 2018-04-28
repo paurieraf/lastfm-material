@@ -10,6 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 import artistReducer from './store/reducers/artist';
 import userReducer from './store/reducers/user';
 
+
 const rootReducer = combineReducers({
     artist: artistReducer,
     user: userReducer,

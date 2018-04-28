@@ -1,57 +1,63 @@
 import React, { Component } from 'react';
-import { GridList, GridTile } from 'material-ui/GridList';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
+import Subheader from 'material-ui/List/ListSubheader';
 import IconButton from 'material-ui/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+
+
+const styles = theme => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+        backgroundColor: theme.palette.background.paper,
+    },
+    gridList: {
+        width: '100%',
+    },
+    icon: {
+        color: 'rgba(255, 255, 255, 0.54)',
+    },
+});
 
 class ArtistGrid extends Component {
-    styles = {
-        root: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
-        },
-        gridList: {
-            width: '100%',
-            overflowY: 'auto',
-        },
-    };
-
-    tilesData = [];
 
     constructor(props) {
         super(props);
-        this.tilesData = props.favouriteArtists;
-        console.log("ARTIST_GRID", props);
+
+        console.log('====================================');
+        console.log(props);
+        console.log('====================================');
     }
 
     render() {
-        return (<div>AyyLmao ArtistGrid</div>);
-    }
-    // render() {
-    //     return (
-    //         <div style={this.styles.root}>
-    //             <GridList
-    //                 cols={2}
-    //                 cellHeight={200}
-    //                 padding={1}
-    //                 style={this.styles.gridList}>
+        const { classes } = this.props;
 
-    //                 {this.tilesData.map((tile) => (
-    //                     <GridTile
-    //                         key={tile.id}
-    //                         title={tile.title}
-    //                         actionIcon={<IconButton></IconButton>}
-    //                         actionPosition="left"
-    //                         titlePosition="top"
-    //                         //titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-    //                         cols={tile.featured ? 2 : 1}
-    //                         rows={tile.featured ? 2 : 1}>
-    //                         <img src={tile.img} />
-    //                     </GridTile>
-    //                 ))}
-    //             </GridList>
-    //         </div>
-    //     );
-    // }
+        return (
+            <div className={classes.root}>
+                <GridList cellHeight={180} className={classes.gridList} cols={4}>
+                    {this.props.favouriteArtists.topartists.artist.map(artist => (
+                        <GridListTile key={artist.name}>
+                            <img src={artist.image['3']['#text']} alt={artist.name} />
+                            <GridListTileBar
+                                title={artist.name}
+                                subtitle={<span>Playcount: {artist.playcount}</span>} />
+                        </GridListTile>
+                    ))}
+                </GridList>
+            </div>
+        );
+    }
 }
 
-export default ArtistGrid;
+ArtistGrid.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+
+export default withStyles(styles)(ArtistGrid);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import ArtistGrid from '../../components/Artist/ArtistGrid/ArtistGrid';
 import * as artistActions from '../../store/actions/index';
 
@@ -8,7 +9,7 @@ class ArtistsPage extends Component {
 
     componentDidMount() {
         console.log('COMPONENT_DID_MOUNT_PROPS', this.props);
-        this.props.onFetchFavouriteArtists();
+        this.props.onFetchFavouriteArtists(this.props.user);
     }
 
     render() {
@@ -23,7 +24,7 @@ class ArtistsPage extends Component {
 
         return (
             <div>
-                <h1>ArtistPage</h1>
+                <h1>Favourite artists</h1>
                 {artistGrid}
             </div>
         );
@@ -32,6 +33,7 @@ class ArtistsPage extends Component {
 
 const mapStateToProps = state => {
     return {
+        user: state.user.loggedUser.user.name,
         favouriteArtists: state.artist.favouriteArtists,
         error: state.artist.error
     };
@@ -39,7 +41,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchFavouriteArtists: () => dispatch(artistActions.fetchFavouriteArtists())
+        onFetchFavouriteArtists: (username) => dispatch(artistActions.fetchFavouriteArtists(username))
     };
 }
 
