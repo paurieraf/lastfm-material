@@ -90,8 +90,8 @@ class Layout extends Component {
                     }}>
                     <div className={classes.toolbar} />
                     <List>
-                        <ListItem button>
-                            <ListItemText primary="Artists" href="/artists" />
+                        <ListItem button component="a" href="/artists" >
+                            <ListItemText primary="Artists" />
                         </ListItem>
                         <ListItem button component="a" href="/albums">
                             <ListItemText primary="Albums" />
@@ -109,7 +109,8 @@ class Layout extends Component {
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Body />
+                    {/* <Body /> */}
+                    {this.props.children}
                 </main>
             </div>
         );

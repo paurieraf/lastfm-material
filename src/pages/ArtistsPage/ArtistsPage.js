@@ -9,7 +9,9 @@ class ArtistsPage extends Component {
 
     componentDidMount() {
         console.log('COMPONENT_DID_MOUNT_PROPS', this.props);
-        this.props.onFetchFavouriteArtists(this.props.user);
+        if (this.props.loggedUser) {
+            this.props.onFetchFavouriteArtists(this.props.loggedUser.user.name);
+        }
     }
 
     render() {
@@ -33,7 +35,7 @@ class ArtistsPage extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user.loggedUser.user.name,
+        loggedUser: state.user.loggedUser,
         favouriteArtists: state.artist.favouriteArtists,
         error: state.artist.error
     };
