@@ -91,25 +91,24 @@ class Layout extends Component {
                     <div className={classes.toolbar} />
                     <List>
                         <ListItem button>
-                            <ListItemText primary="Artists" />
+                            <ListItemText primary="Artists" href="/artists" />
                         </ListItem>
-                        <ListItem button component="a" href="#simple-list">
+                        <ListItem button component="a" href="/albums">
                             <ListItemText primary="Albums" />
                         </ListItem>
-                        <ListItem button component="a" href="#simple-list">
+                        <ListItem button component="a" href="/tracks">
                             <ListItemText primary="Tracks" />
                         </ListItem>
                     </List>
                     <Divider />
                     <List>
                         <ListItem button>
-                            <ListItemText primary="About" />
+                            <ListItemText primary="About" href="/about" />
                         </ListItem>
                     </List>
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-
                     <Body />
                 </main>
             </div>
