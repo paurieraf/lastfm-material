@@ -36,9 +36,11 @@ class AboutPage extends Component {
                 <h1>About</h1>
 
                 <Card className={classes.card}>
-                    <Typography>
-                        Test
-                    </Typography>
+                    <CardContent>
+                        <Typography >
+                            
+                        </Typography>
+                    </CardContent>
                 </Card>
             </div>
         );
