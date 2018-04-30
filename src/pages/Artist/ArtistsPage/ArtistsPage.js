@@ -7,7 +7,6 @@ import * as artistActions from '../../../store/actions/index';
 class ArtistsPage extends Component {
 
     componentDidMount() {
-        console.log('COMPONENT_DID_MOUNT_PROPS', this.props);
         if (this.props.loggedUser) {
             console.log('FETCHING_FAV_ARTISTS');
             this.props.onFetchFavouriteArtists(this.props.loggedUser.user.name);

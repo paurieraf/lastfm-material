@@ -10,6 +10,10 @@ class ArtistDetailPage extends Component {
         if (this.props.loggedUser) {
             console.log('FETCHING_ARTIST_INFO');
             //FETCH ARTIST INFO
+            console.log('====================================');
+            console.log('ARTIST_DETAIL_PROPS', this.props);
+            console.log('====================================');
+            this.props.onFetchArtistInfo(this.props.match.params.mbid);
         }
     }
 
@@ -20,12 +24,16 @@ class ArtistDetailPage extends Component {
             : <p>Loading...</p>;
 
         if (this.props.currentArtist) {
-            artistDetail = (<ArtistDetail favouriteArtists={this.props.favouriteArtists} />);
+            artistDetail = (
+                <div>
+                    <h1>{this.props.currentArtist.name}</h1>
+                    <ArtistDetail currentArtist={this.props.currentArtist} />
+                </div>
+            );
         }
 
         return (
             <div>
-                <h1>{this.props.currentArtist.name}</h1>
                 {artistDetail}
             </div>
         );
