@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import { Paper } from 'material-ui';
 import ArtistsPage from '../../pages/ArtistsPage/ArtistsPage';
 import LoginDialog from '../../components/LoginDialog/LoginDialog';
 
 class Body extends Component {
+    state = {
+        redirect: false
+    }
+
     style = {
         width: '80%',
         margin: 10,
@@ -13,6 +18,7 @@ class Body extends Component {
     };
 
     render() {
+        const { redirect } = this.state;
         if (!this.props.loggedUser) {
             return (
                 <div className="Body">
@@ -22,9 +28,7 @@ class Body extends Component {
         }
 
         return (
-            <div className="Body">
-                <ArtistsPage />
-            </div>
+            <Redirect to='/artists' />
         );
     }
 }
