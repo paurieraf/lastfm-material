@@ -32,7 +32,7 @@ class TrackList extends Component {
             <div className={classes.root}>
                 <List>
                     {this.props.favouriteTracks.toptracks.track.map(track => (
-                        <ListItem key={track.name} dense button className={classes.listItem}>
+                        <ListItem key={track.name} dense className={classes.listItem}>
                             <Avatar src={track.image['3']['#text']} alt={track.name} />
                             <ListItemText primary={track.name} secondary={track.artist.name} />
                             <ListItemSecondaryAction>
