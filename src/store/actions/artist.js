@@ -39,7 +39,7 @@ export const fetchArtistInfo = (artistMbid) => {
             + '&method=artist.getInfo'
             + '&mbid=' + artistMbid
         ).then(response => {
-            dispatch(storeFavouriteArtists(response.data));
+            dispatch(storeCurrentArtist(response.data));
         }).catch(err => {
             dispatch(fetchFavouriteArtistsFailed());
         });

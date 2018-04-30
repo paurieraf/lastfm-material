@@ -7,14 +7,12 @@ import * as artistActions from '../../../store/actions/index';
 class ArtistDetailPage extends Component {
 
     componentDidMount() {
-        if (this.props.loggedUser) {
-            console.log('FETCHING_ARTIST_INFO');
-            //FETCH ARTIST INFO
-            console.log('====================================');
-            console.log('ARTIST_DETAIL_PROPS', this.props);
-            console.log('====================================');
-            this.props.onFetchArtistInfo(this.props.match.params.mbid);
-        }
+        console.log('FETCHING_ARTIST_INFO');
+        //FETCH ARTIST INFO
+        console.log('====================================');
+        console.log('ARTIST_DETAIL_PROPS', this.props);
+        console.log('====================================');
+        this.props.onFetchArtistInfo(this.props.match.params.mbid);
     }
 
     render() {
@@ -26,8 +24,8 @@ class ArtistDetailPage extends Component {
         if (this.props.currentArtist) {
             artistDetail = (
                 <div>
-                    <h1>{this.props.currentArtist.name}</h1>
-                    <ArtistDetail currentArtist={this.props.currentArtist} />
+                    <h1>{this.props.currentArtist.artist.name}</h1>
+                    <ArtistDetail currentArtist={this.props.currentArtist.artist} />
                 </div>
             );
         }

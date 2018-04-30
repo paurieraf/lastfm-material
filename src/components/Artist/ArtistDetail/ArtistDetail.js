@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
-import Subheader from 'material-ui/List/ListSubheader';
-import IconButton from 'material-ui/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
-
+    card: {
+        maxWidth: '50%',
+    },
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
+    },
 });
 
 class ArtistDetail extends Component {
@@ -27,8 +31,29 @@ class ArtistDetail extends Component {
 
 
         return (
-            <div className={classes.root}>
-
+            <div>
+                <Card className={classes.card}>
+                    <CardMedia
+                        className={classes.media}
+                        image={this.props.currentArtist.image[3]['#text']}
+                        title={this.props.currentArtist.name}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="headline" component="h2">
+                            {this.props.currentArtist.name}
+                        </Typography>
+                        <Typography component="p" dangerouslySetInnerHTML={{__html: this.props.currentArtist.bio.summary}}>
+                        </Typography>
+                    </CardContent>
+                    {/* <CardActions>
+                        <Button size="small" color="primary">
+                            Share
+                        </Button>
+                        <Button size="small" color="primary">
+                            Learn More
+                        </Button>
+                    </CardActions> */}
+                </Card>
             </div>
         );
     }
