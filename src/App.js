@@ -8,6 +8,7 @@ import ArtistsPage from './pages/ArtistsPage/ArtistsPage';
 import AlbumsPage from './pages/AlbumsPage/AlbumsPage';
 import TracksPage from './pages/TracksPage/TracksPage';
 import Body from './containers/Body/Body';
+import AboutPage from './pages/AboutPage/AboutPage';
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/artists" component={ArtistsPage} />
           <Route path="/albums" component={AlbumsPage} />
           <Route path="/tracks" component={TracksPage} />
+          <Route path="/about" component={AboutPage} />
         </Switch>
       </Layout>
     );

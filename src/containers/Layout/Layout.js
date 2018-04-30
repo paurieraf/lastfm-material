@@ -103,8 +103,8 @@ class Layout extends Component {
                     </List>
                     <Divider />
                     <List>
-                        <ListItem button>
-                            <ListItemText primary="About" route="/about" />
+                        <ListItem button component={Link} to="about">
+                            <ListItemText primary="About" />
                         </ListItem>
                     </List>
                 </Drawer>
