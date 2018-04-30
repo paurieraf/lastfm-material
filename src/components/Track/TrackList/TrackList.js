@@ -6,7 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import Subheader from 'material-ui/List/ListSubheader';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import List, { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 
 
@@ -29,24 +29,15 @@ class TrackList extends Component {
         console.log('TRACK_LIST_PROPS', this.props);
 
         return (
-            // <div className={classes.root}>
-            //     <GridList cellHeight={180} className={classes.gridList} cols={4}>
-            //         {this.props.favouriteArtists.topartists.artist.map(artist => (
-            //             <GridListTile key={artist.name}>
-            //                 <img src={artist.image['3']['#text']} alt={artist.name} />
-            //                 <GridListTileBar
-            //                     title={artist.name}
-            //                     subtitle={<span>Playcount: {artist.playcount}</span>} />
-            //             </GridListTile>
-            //         ))}
-            //     </GridList>
-            // </div>
             <div className={classes.root}>
                 <List>
                     {this.props.favouriteTracks.toptracks.track.map(track => (
                         <ListItem key={track.name} dense button className={classes.listItem}>
                             <Avatar src={track.image['3']['#text']} alt={track.name} />
-                            <ListItemText primary={track.name} secondary="Ayy lmao" />
+                            <ListItemText primary={track.name} secondary={track.artist.name} />
+                            <ListItemSecondaryAction>
+                                <ListItemText primary={`Playcount: ${track.playcount}`} />
+                            </ListItemSecondaryAction>
                         </ListItem>
                     ))}
                 </List>
