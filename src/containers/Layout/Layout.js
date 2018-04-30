@@ -91,19 +91,19 @@ class Layout extends Component {
                     }}>
                     <div className={classes.toolbar} />
                     <MenuList>
-                        <MenuItem button component={Link} to="artists" >
+                        <MenuItem button component={Link} to="/artists" >
                             <ListItemText primary="Artists" />
                         </MenuItem>
-                        <MenuItem button component={Link} to="albums">
+                        <MenuItem button component={Link} to="/albums">
                             <ListItemText primary="Albums" />
                         </MenuItem>
-                        <MenuItem button component={Link} to="tracks">
+                        <MenuItem button component={Link} to="/tracks">
                             <ListItemText primary="Tracks" />
                         </MenuItem>
                     </MenuList>
                     <Divider />
                     <MenuList>
-                        <MenuItem button component={Link} to="about">
+                        <MenuItem button component={Link} to="/about">
                             <ListItemText primary="About" />
                         </MenuItem>
                     </MenuList>

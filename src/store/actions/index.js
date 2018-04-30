@@ -1,6 +1,8 @@
 export {
     fetchFavouriteArtists,
     storeFavouriteArtists,
+    fetchArtistInfo,
+    storeCurrentArtist,
 } from './artist';
 
 export {

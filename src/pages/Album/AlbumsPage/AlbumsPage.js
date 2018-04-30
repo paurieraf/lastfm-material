@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import AlbumGrid from '../../components/Album/AlbumGrid/AlbumGrid';
-import * as albumActions from '../../store/actions/index';
+import AlbumGrid from '../../../components/Album/AlbumGrid/AlbumGrid';
+import * as albumActions from '../../../store/actions/index';
 
 class AlbumsPage extends Component {
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ArtistGrid from '../../components/Artist/ArtistGrid/ArtistGrid';
-import * as artistActions from '../../store/actions/index';
+import ArtistGrid from '../../../components/Artist/ArtistGrid/ArtistGrid';
+import * as artistActions from '../../../store/actions/index';
 
 class ArtistsPage extends Component {
 
@@ -10,9 +10,7 @@ class ArtistsPage extends Component {
         console.log('COMPONENT_DID_MOUNT_PROPS', this.props);
         if (this.props.loggedUser) {
             console.log('FETCHING_FAV_ARTISTS');
-            this
-                .props
-                .onFetchFavouriteArtists(this.props.loggedUser.user.name);
+            this.props.onFetchFavouriteArtists(this.props.loggedUser.user.name);
         }
     }
 

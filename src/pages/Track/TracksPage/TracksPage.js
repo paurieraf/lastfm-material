@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import TrackList from '../../components/Track/TrackList/TrackList';
-import * as trackActions from '../../store/actions/index';
+import TrackList from '../../../components/Track/TrackList/TrackList';
+import * as trackActions from '../../../store/actions/index';
 
 class TracksPage extends Component {
 

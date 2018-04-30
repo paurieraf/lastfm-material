@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Subheader from 'material-ui/List/ListSubheader';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
+import { withRouter } from 'react-router'
 
 
 const styles = theme => ({
@@ -31,18 +33,33 @@ class ArtistGrid extends Component {
         super(props);
     }
 
+    onHandleArtistTileClick(artistMbid) {
+        this.props.history.push('/artists/' + artistMbid);
+    }
+
     render() {
-        const { classes } = this.props;
+        const { classes, match, location, history } = this.props;
 
         return (
             <div className={classes.root}>
-                <GridList cellHeight={180} className={classes.gridList} cols={4}>
+                <GridList
+                    cellHeight={180}
+                    cols={4}
+                    className={classes.gridList}>
                     {this.props.favouriteArtists.topartists.artist.map(artist => (
-                        <GridListTile key={artist.name}>
+                        <GridListTile
+                            key={artist.name}>
                             <img src={artist.image['3']['#text']} alt={artist.name} />
                             <GridListTileBar
                                 title={artist.name}
-                                subtitle={<span>Playcount: {artist.playcount}</span>} />
+                                subtitle={<span>Playcount: {artist.playcount}</span>}
+                                actionIcon={
+                                    <IconButton
+                                        className={classes.icon}
+                                        onClick={(artistMbid) => this.onHandleArtistTileClick(artist.mbid)} >
+                                        <InfoIcon />
+                                    </IconButton>
+                                } />
                         </GridListTile>
                     ))}
                 </GridList>
@@ -52,8 +69,11 @@ class ArtistGrid extends Component {
 }
 
 ArtistGrid.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
 };
 
 
-export default withStyles(styles)(ArtistGrid);
+export default compose(withRouter, withStyles(styles))(ArtistGrid);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { Paper } from 'material-ui';
-import ArtistsPage from '../../pages/ArtistsPage/ArtistsPage';
+import ArtistsPage from '../../pages/Artist/ArtistsPage/ArtistsPage';
 import LoginDialog from '../../components/User/LoginDialog/LoginDialog';
 
 class Body extends Component {
