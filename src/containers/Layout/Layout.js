@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/Menu/MenuItem';
+import { MenuList, MenuItem } from 'material-ui/Menu';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -46,7 +46,15 @@ const styles = theme => ({
         padding: theme.spacing.unit * 3,
         minWidth: 0, // So the Typography noWrap works
     },
-    toolbar: theme.mixins.toolbar
+    toolbar: theme.mixins.toolbar,
+    menuItem: {
+        '&:focus': {
+            backgroundColor: '#EEEEEE',
+            '& $primary, & $icon': {
+                color: theme.palette.common.white,
+            },
+        },
+    },
 });
 
 class Layout extends Component {
@@ -90,23 +98,23 @@ class Layout extends Component {
                         paper: classes.drawerPaper
                     }}>
                     <div className={classes.toolbar} />
-                    <List>
-                        <ListItem button component={Link} to="artists" >
+                    <MenuList>
+                        <MenuItem className={classes.menuItem} button component={Link} to="artists" >
                             <ListItemText primary="Artists" />
-                        </ListItem>
-                        <ListItem button component={Link} to="albums">
+                        </MenuItem>
+                        <MenuItem className={classes.menuItem} button component={Link} to="albums">
                             <ListItemText primary="Albums" />
-                        </ListItem>
-                        <ListItem button component={Link} to="tracks">
+                        </MenuItem>
+                        <MenuItem className={classes.menuItem} button component={Link} to="tracks">
                             <ListItemText primary="Tracks" />
-                        </ListItem>
-                    </List>
+                        </MenuItem>
+                    </MenuList>
                     <Divider />
-                    <List>
-                        <ListItem button component={Link} to="about">
+                    <MenuList>
+                        <MenuItem className={classes.menuItem} button component={Link} to="about">
                             <ListItemText primary="About" />
-                        </ListItem>
-                    </List>
+                        </MenuItem>
+                    </MenuList>
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
