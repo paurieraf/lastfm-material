@@ -37,8 +37,20 @@ class AboutPage extends Component {
 
                 <Card className={classes.card}>
                     <CardContent>
-                        <Typography >
-                            
+                        <Typography>
+                            <p>A simple Last.fm application.</p>
+                            <p>
+                                Technologies used:
+                                <ul>
+                                    <li>React</li>
+                                    <li>Redux</li>
+                                    <li>Material-ui-next</li>
+                                </ul>
+                            </p>
+                            <p>
+                                Made by <strong>Pau Riera</strong> as a React exercise with GNU/GPLv3 license. <br />
+                                Check my GitHub profile: <a href="https://github.com/prierafor">https://github.com/prierafor</a>
+                            </p>
                         </Typography>
                     </CardContent>
                 </Card>
