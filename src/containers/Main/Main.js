@@ -5,7 +5,7 @@ import { Paper } from 'material-ui';
 import ArtistsPage from '../../pages/Artist/ArtistsPage/ArtistsPage';
 import LoginDialog from '../../components/User/LoginDialog/LoginDialog';
 
-class Body extends Component {
+class Main extends Component {
     state = {
         redirect: false
     }
@@ -21,7 +21,7 @@ class Body extends Component {
         const { redirect } = this.state;
         if (!this.props.loggedUser) {
             return (
-                <div className="Body">
+                <div className="Main">
                     <LoginDialog />
                 </div>
             );
@@ -41,4 +41,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps)(Body);
+export default connect(mapStateToProps)(Main);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import TrackList from '../../../components/Track/TrackList/TrackList';
 import * as trackActions from '../../../store/actions/index';
+import LoginDialog from '../../../components/User/LoginDialog/LoginDialog';
 
 class TracksPage extends Component {
 
@@ -15,6 +16,14 @@ class TracksPage extends Component {
 
     render() {
         let trackList = this.props.error ? <p>Error loading favourite albums</p> : <p>Loading...</p>;
+
+        if (!this.props.loggedUser) {
+            return (
+                <div className="Main">
+                    <LoginDialog />
+                </div>
+            );
+        }
 
         if (this.props.favouriteTracks) {
             trackList = (

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import AlbumGrid from '../../../components/Album/AlbumGrid/AlbumGrid';
 import * as albumActions from '../../../store/actions/index';
+import LoginDialog from '../../../components/User/LoginDialog/LoginDialog';
 
 class AlbumsPage extends Component {
 
@@ -18,6 +19,14 @@ class AlbumsPage extends Component {
     render() {
         console.log('RENDER_PROPS', this.props);
         let albumGrid = this.props.error ? <p>Error loading favourite albums</p> : <p>Loading...</p>;
+
+        if (!this.props.loggedUser) {
+            return (
+                <div className="Main">
+                    <LoginDialog />
+                </div>
+            );
+        }
 
         if (this.props.favouriteAlbums) {
             albumGrid = (

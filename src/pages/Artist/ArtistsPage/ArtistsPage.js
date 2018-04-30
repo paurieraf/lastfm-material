@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import ArtistGrid from '../../../components/Artist/ArtistGrid/ArtistGrid';
 import * as artistActions from '../../../store/actions/index';
+import LoginDialog from '../../../components/User/LoginDialog/LoginDialog';
 
 class ArtistsPage extends Component {
 
@@ -18,6 +19,14 @@ class ArtistsPage extends Component {
         let artistGrid = this.props.error
             ? <p>Error loading favouriteArtists</p>
             : <p>Loading...</p>;
+
+        if (!this.props.loggedUser) {
+            return (
+                <div className="Main">
+                    <LoginDialog />
+                </div>
+            );
+        }
 
         if (this.props.favouriteArtists) {
             artistGrid = (<ArtistGrid favouriteArtists={this.props.favouriteArtists} />);

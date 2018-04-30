@@ -7,7 +7,7 @@ import Layout from './containers/Layout/Layout';
 import ArtistsPage from './pages/Artist/ArtistsPage/ArtistsPage';
 import AlbumsPage from './pages/Album/AlbumsPage/AlbumsPage';
 import TracksPage from './pages/Track/TracksPage/TracksPage';
-import Body from './containers/Body/Body';
+import Main from './containers/Main/Main';
 import AboutPage from './pages/AboutPage/AboutPage';
 import ArtistDetailPage from './pages/Artist/ArtistDetailPage/ArtistDetailPage';
 
@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <Layout>
         <Switch>
-          <Route path="/" exact component={Body} />
+          <Route path="/" exact component={Main} />
           <Route path="/artists" exact component={ArtistsPage} />
           <Route path="/artists/:mbid" component={ArtistDetailPage} />
           <Route path="/albums" exact component={AlbumsPage} />
