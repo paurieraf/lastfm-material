@@ -11,6 +11,7 @@ import IconButton from 'material-ui/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
 import Body from '../Body/Body';
+import { Link } from 'react-router-dom';
 
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 
@@ -90,20 +91,20 @@ class Layout extends Component {
                     }}>
                     <div className={classes.toolbar} />
                     <List>
-                        <ListItem button component="a" href="/artists" >
+                        <ListItem button component={Link} to="artists" >
                             <ListItemText primary="Artists" />
                         </ListItem>
-                        <ListItem button component="a" href="/albums">
+                        <ListItem button component={Link} to="albums">
                             <ListItemText primary="Albums" />
                         </ListItem>
-                        <ListItem button component="a" href="/tracks">
+                        <ListItem button component={Link} to="tracks">
                             <ListItemText primary="Tracks" />
                         </ListItem>
                     </List>
                     <Divider />
                     <List>
                         <ListItem button>
-                            <ListItemText primary="About" href="/about" />
+                            <ListItemText primary="About" route="/about" />
                         </ListItem>
                     </List>
                 </Drawer>
