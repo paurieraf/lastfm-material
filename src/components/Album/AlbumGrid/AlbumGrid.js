@@ -15,7 +15,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
+        //backgroundColor: theme.palette.background.paper,
     },
     gridList: {
         width: '100%',
@@ -29,10 +29,6 @@ class AlbumGrid extends Component {
 
     constructor(props) {
         super(props);
-
-        console.log('====================================');
-        console.log(props);
-        console.log('====================================');
     }
 
     render() {
@@ -41,12 +37,12 @@ class AlbumGrid extends Component {
         return (
             <div className={classes.root}>
                 <GridList cellHeight={180} className={classes.gridList} cols={4}>
-                    {this.props.favouriteArtists.topartists.artist.map(artist => (
-                        <GridListTile key={artist.name}>
-                            <img src={artist.image['3']['#text']} alt={artist.name} />
+                    {this.props.favouriteAlbums.topalbums.album.map(album => (
+                        <GridListTile key={album.name}>
+                            <img src={album.image['3']['#text']} alt={album.name} />
                             <GridListTileBar
-                                title={artist.name}
-                                subtitle={<span>Playcount: {artist.playcount}</span>} />
+                                title={album.name}
+                                subtitle={<span>Playcount: {album.playcount}</span>} />
                         </GridListTile>
                     ))}
                 </GridList>

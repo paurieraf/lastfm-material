@@ -6,6 +6,7 @@ import './App.css';
 import Layout from './containers/Layout/Layout';
 import ArtistsPage from './pages/ArtistsPage/ArtistsPage';
 import AlbumsPage from './pages/AlbumsPage/AlbumsPage';
+import TracksPage from './pages/TracksPage/TracksPage';
 import Body from './containers/Body/Body';
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
           <Route path="/" exact component={Body} />
           <Route path="/artists" component={ArtistsPage} />
           <Route path="/albums" component={AlbumsPage} />
-          <Route path="/tracks" component={ArtistsPage} />
+          <Route path="/tracks" component={TracksPage} />
         </Switch>
       </Layout>
     );

@@ -10,11 +10,15 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import artistReducer from './store/reducers/artist';
 import userReducer from './store/reducers/user';
-
+import albumReducer from './store/reducers/album';
+import trackReducer from './store/reducers/track';
 
 const rootReducer = combineReducers({
     artist: artistReducer,
+    album: albumReducer,
+    track: trackReducer,
     user: userReducer,
+
     //Others reducers
 });
 

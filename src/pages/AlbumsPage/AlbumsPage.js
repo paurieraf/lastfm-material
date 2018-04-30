@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AlbumGrid from '../../components/Album/AlbumGrid/AlbumGrid';
-import * as artistActions from '../../store/actions/index';
+import * as albumActions from '../../store/actions/index';
 
 class AlbumsPage extends Component {
 
@@ -37,14 +37,14 @@ class AlbumsPage extends Component {
 const mapStateToProps = state => {
     return {
         loggedUser: state.user.loggedUser,
-        favouriteAlbums: state.artist.favouriteAlbums,
-        error: state.artist.error
+        favouriteAlbums: state.album.favouriteAlbums,
+        error: state.album.error
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchFavouriteAlbums: (username) => dispatch(artistActions.fetchFavouriteArtists(username))
+        onFetchFavouriteAlbums: (username) => dispatch(albumActions.fetchFavouriteAlbums(username))
     };
 }
 

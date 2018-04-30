@@ -15,7 +15,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
+        //backgroundColor: theme.palette.background.paper,
     },
     gridList: {
         width: '100%',
@@ -29,10 +29,6 @@ class ArtistGrid extends Component {
 
     constructor(props) {
         super(props);
-
-        console.log('====================================');
-        console.log(props);
-        console.log('====================================');
     }
 
     render() {

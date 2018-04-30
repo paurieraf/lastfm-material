@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TextField, Button } from 'material-ui';
-import * as userActions from '../../store/actions/index';
+import * as userActions from '../../../store/actions/index';
 import { Dialog } from 'material-ui';
 import { DialogTitle } from 'material-ui';
 import { DialogContent } from 'material-ui';
