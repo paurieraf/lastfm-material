@@ -47,14 +47,6 @@ const styles = theme => ({
         minWidth: 0, // So the Typography noWrap works
     },
     toolbar: theme.mixins.toolbar,
-    menuItem: {
-        '&:focus': {
-            backgroundColor: '#EEEEEE',
-            '& $primary, & $icon': {
-                color: theme.palette.common.white,
-            },
-        },
-    },
 });
 
 class Layout extends Component {
@@ -99,19 +91,19 @@ class Layout extends Component {
                     }}>
                     <div className={classes.toolbar} />
                     <MenuList>
-                        <MenuItem className={classes.menuItem} button component={Link} to="artists" >
+                        <MenuItem button component={Link} to="artists" >
                             <ListItemText primary="Artists" />
                         </MenuItem>
-                        <MenuItem className={classes.menuItem} button component={Link} to="albums">
+                        <MenuItem button component={Link} to="albums">
                             <ListItemText primary="Albums" />
                         </MenuItem>
-                        <MenuItem className={classes.menuItem} button component={Link} to="tracks">
+                        <MenuItem button component={Link} to="tracks">
                             <ListItemText primary="Tracks" />
                         </MenuItem>
                     </MenuList>
                     <Divider />
                     <MenuList>
-                        <MenuItem className={classes.menuItem} button component={Link} to="about">
+                        <MenuItem button component={Link} to="about">
                             <ListItemText primary="About" />
                         </MenuItem>
                     </MenuList>
