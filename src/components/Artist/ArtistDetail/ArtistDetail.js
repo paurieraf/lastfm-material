@@ -6,8 +6,11 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
+
 
 const styles = theme => ({
+    root: {},
     card: {
         maxWidth: '50%',
     },
@@ -31,7 +34,7 @@ class ArtistDetail extends Component {
 
 
         return (
-            <div>
+            <Grid container justify="center" className={classes.root}>
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.media}
@@ -42,7 +45,7 @@ class ArtistDetail extends Component {
                         <Typography gutterBottom variant="headline" component="h2">
                             {this.props.currentArtist.name}
                         </Typography>
-                        <Typography component="p" dangerouslySetInnerHTML={{__html: this.props.currentArtist.bio.summary}}>
+                        <Typography component="p" dangerouslySetInnerHTML={{ __html: this.props.currentArtist.bio.summary }}>
                         </Typography>
                     </CardContent>
                     {/* <CardActions>
@@ -54,7 +57,7 @@ class ArtistDetail extends Component {
                         </Button>
                     </CardActions> */}
                 </Card>
-            </div>
+            </Grid>
         );
     }
 }

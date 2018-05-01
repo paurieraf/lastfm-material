@@ -1,4 +1,4 @@
-# Last-FM Material
+# Last.fm Material
 
 A simple web app to check Last.fm user data built with React and Material-UI.
 
