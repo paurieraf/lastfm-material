@@ -48,7 +48,7 @@ class AboutPage extends Component {
                                 </ul>
                             </p>
                             <p>
-                                Made by <strong>Pau Riera</strong> as a React exercise with GNU/GPLv3 license. <br />
+                                Made by <strong>Pau Riera</strong> as a React exercise under the GNU/GPLv3 license. <br />
                                 Check my GitHub profile: <a href="https://github.com/prierafor">https://github.com/prierafor</a>
                             </p>
                         </Typography>
