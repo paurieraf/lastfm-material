@@ -4,9 +4,9 @@ A simple web app to check Last.fm user data built with React and Material-UI.
 
 ## Deployment
 
-1. copy the .env.dist file to .env and fill the variables with your Last.fm developer account data.
+1. Copy the .env.dist file to .env and fill the variables with your Last.fm developer account data.
 
-2.
+2.:
 ```
 npm install
 npm start
