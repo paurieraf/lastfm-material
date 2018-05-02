@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Drawer from 'material-ui/Drawer';
 import { MenuList, MenuItem } from 'material-ui/Menu';
 import AppBar from 'material-ui/AppBar';
+import Hidden from 'material-ui/Hidden';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
@@ -23,43 +24,56 @@ const drawerWidth = 240;
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        //height: 430,
         zIndex: 1,
         overflow: 'hidden',
         position: 'relative',
-        display: 'flex'
+        display: 'flex',
+        width: '100%',
     },
     appBar: {
-        zIndex: theme.zIndex.drawer + 1
+        position: 'absolute',
+        marginLeft: drawerWidth,
+        [theme.breakpoints.up('md')]: {
+            width: `calc(100% - ${drawerWidth}px)`,
+        },
     },
-    flex: {
-        flex: 1,
+    navIconHide: {
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
     },
+    toolbar: theme.mixins.toolbar,
     drawerPaper: {
-        position: 'relative',
-        width: drawerWidth
+        width: drawerWidth,
+        [theme.breakpoints.up('md')]: {
+            position: 'relative',
+        },
     },
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
         padding: theme.spacing.unit * 3,
-        minWidth: 0, // So the Typography noWrap works
     },
-    toolbar: theme.mixins.toolbar,
 });
 
 class Layout extends Component {
+    state = {
+        mobileOpen: false,
+    };
 
     constructor(props) {
         super(props);
-    }
+    };
 
-    handleToggle = () => this.setState({
-        open: !this.state.open
-    });
+    handleDrawerToggle = () => {
+        this.setState({
+            mobileOpen: !this.state.mobileOpen
+        });
+    };
 
     render() {
-        const { classes } = this.props;
+        const { classes, theme } = this.props;
+
         let helloUser = this.props.loggedUser ?
             <span>
                 <IconButton
@@ -70,10 +84,42 @@ class Layout extends Component {
                 Hello {this.props.loggedUser.user.name}
             </span> : '';
 
+        const drawer = (
+            <div>
+                <div className={classes.toolbar} />
+                <Divider />
+                <MenuList>
+                    <MenuItem button component={Link} to="/artists" >
+                        <ListItemText primary="Artists" />
+                    </MenuItem>
+                    <MenuItem button component={Link} to="/albums">
+                        <ListItemText primary="Albums" />
+                    </MenuItem>
+                    <MenuItem button component={Link} to="/tracks">
+                        <ListItemText primary="Tracks" />
+                    </MenuItem>
+                </MenuList>
+                <Divider />
+                <MenuList>
+                    <MenuItem button component={Link} to="/about">
+                        <ListItemText primary="About" />
+                    </MenuItem>
+                </MenuList>
+            </div>
+        );
+
         return (
             <div className={classes.root}>
-                <AppBar position="absolute" className={classes.appBar}>
+                <AppBar className={classes.appBar}>
                     <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="Open drawer"
+                            onClick={this.handleDrawerToggle}
+                            className={classes.navIconHide}
+                        >
+                            <MenuIcon />
+                        </IconButton>
                         <Typography variant="title" color="inherit" noWrap className={classes.flex}>
                             Last.fm
                         </Typography>
@@ -83,30 +129,33 @@ class Layout extends Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <Drawer
-                    variant="permanent"
-                    classes={{
-                        paper: classes.drawerPaper
-                    }}>
-                    <div className={classes.toolbar} />
-                    <MenuList>
-                        <MenuItem button component={Link} to="/artists" >
-                            <ListItemText primary="Artists" />
-                        </MenuItem>
-                        <MenuItem button component={Link} to="/albums">
-                            <ListItemText primary="Albums" />
-                        </MenuItem>
-                        <MenuItem button component={Link} to="/tracks">
-                            <ListItemText primary="Tracks" />
-                        </MenuItem>
-                    </MenuList>
-                    <Divider />
-                    <MenuList>
-                        <MenuItem button component={Link} to="/about">
-                            <ListItemText primary="About" />
-                        </MenuItem>
-                    </MenuList>
-                </Drawer>
+                <Hidden mdUp>
+                    <Drawer
+                        variant="temporary"
+                        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                        open={this.state.mobileOpen}
+                        onClose={this.handleDrawerToggle}
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        ModalProps={{
+                            keepMounted: true, // Better open performance on mobile.
+                        }}
+                    >
+                        {drawer}
+                    </Drawer>
+                </Hidden>
+                <Hidden smDown implementation="css">
+                    <Drawer
+                        variant="permanent"
+                        open
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                    >
+                        {drawer}
+                    </Drawer>
+                </Hidden>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
                     {/* <Body /> */}
@@ -118,7 +167,8 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    theme: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -128,4 +178,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default compose(withStyles(styles), connect(mapStateToProps))(Layout);
+export default compose(withStyles(styles, { withTheme: true }), connect(mapStateToProps))(Layout);
