@@ -77,6 +77,7 @@ class Layout extends Component {
         let helloUser = this.props.loggedUser ?
             <span>
                 <IconButton
+                    component={Link} to="/profile"
                     aria-haspopup="true"
                     color="inherit">
                     <AccountCircle />

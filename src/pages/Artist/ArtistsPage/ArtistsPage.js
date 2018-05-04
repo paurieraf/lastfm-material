@@ -15,7 +15,6 @@ class ArtistsPage extends Component {
     }
 
     render() {
-        console.log('RENDER_PROPS', this.props);
         let artistGrid = this.props.error
             ? <p>Error loading favouriteArtists</p>
             : <p>Loading...</p>;

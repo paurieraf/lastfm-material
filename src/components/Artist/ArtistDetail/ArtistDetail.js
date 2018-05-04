@@ -12,7 +12,7 @@ import Grid from 'material-ui/Grid';
 const styles = theme => ({
     root: {},
     card: {
-        maxWidth: '50%',
+        maxWidth: '85%',
     },
     media: {
         height: 0,
@@ -31,7 +31,6 @@ class ArtistDetail extends Component {
 
     render() {
         const { classes } = this.props;
-
 
         return (
             <Grid container justify="center" className={classes.root}>
