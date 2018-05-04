@@ -38,7 +38,7 @@ class AboutPage extends Component {
                 <Card className={classes.card}>
                     <CardContent>
                         <Typography>
-                            <p>A simple Last.fm application.</p>
+                            <p>A simple web app to check Last.fm user data built with React, Redux and Material-UI to get familiarized with these technologies.</p>
                             <p>
                                 Technologies used:
                                 <ul>
